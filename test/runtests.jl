@@ -4,6 +4,10 @@ using Test
 import Pkg
 
 @testset "PackageCompilerConvenienceTools.jl" begin
+    @testset "utils.jl" begin
+        PackageCompilerConvenienceTools._with_different_project(PackageCompilerConvenienceTools.default_project()) do activated_project
+        end
+    end
     @testset "public.jl" begin
         @testset "fast_and_simple" begin
             PackageCompilerConvenienceTools._with_temp_project() do my_temp_project

@@ -54,7 +54,3 @@ end
     Pkg.activate(original_active_project; shared = false)
     return result
 end
-
-@inline function _default_project(version::VersionNumber = Base.VERSION)
-    return "@v$(version.major).$(version.minor)"
-end
