@@ -1,7 +1,7 @@
 name = "PackageCompilerHelper"
 uuid = "d133116e-6e7b-4696-be2a-2268182a7016"
 authors = ["Dilum Aluthge"]
-version = "0.1.0"
+version = "0.1.0-DEV"
 
 [compat]
 julia = "1.4"
