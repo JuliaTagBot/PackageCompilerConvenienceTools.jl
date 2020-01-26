@@ -1,9 +1,9 @@
-# PackageCompilerHelper
+# PackageCompilerConvenienceTools
 
-[![Build Status](https://travis-ci.com/bcbi/PackageCompilerHelper.jl.svg?branch=master)](https://travis-ci.com/bcbi/PackageCompilerHelper.jl)
-[![Codecov](https://codecov.io/gh/bcbi/PackageCompilerHelper.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/bcbi/PackageCompilerHelper.jl)
+[![Build Status](https://travis-ci.com/bcbi/PackageCompilerConvenienceTools.jl.svg?branch=master)](https://travis-ci.com/bcbi/PackageCompilerConvenienceTools.jl)
+[![Codecov](https://codecov.io/gh/bcbi/PackageCompilerConvenienceTools.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/bcbi/PackageCompilerConvenienceTools.jl)
 
-`PackageCompilerHelper` provides some convenience functions that make it
+`PackageCompilerConvenienceTools` provides some convenience functions that make it
 easier to use [`PackageCompilerX`](https://github.com/KristofferC/PackageCompilerX.jl).
 
 ## Installation
@@ -11,8 +11,8 @@ easier to use [`PackageCompilerX`](https://github.com/KristofferC/PackageCompile
 ### Recommended method
 
 ```bash
-git clone https://github.com/bcbi/PackageCompilerHelper.jl
-cd PackageCompilerHelper.jl
+git clone https://github.com/bcbi/PackageCompilerConvenienceTools.jl
+cd PackageCompilerConvenienceTools.jl
 julia --project -e 'import Pkg; Pkg.instantiate()'
 ```
 
@@ -20,8 +20,8 @@ julia --project -e 'import Pkg; Pkg.instantiate()'
 
 ```bash
 julia -e 'import Pkg; Pkg.add("GitCommand")'
-julia -e 'import GitCommand; GitCommand.git() do git run(`$(git) clone https://github.com/bcbi/PackageCompilerHelper.jl`) end'
-cd PackageCompilerHelper.jl
+julia -e 'import GitCommand; GitCommand.git() do git run(`$(git) clone https://github.com/bcbi/PackageCompilerConvenienceTools.jl`) end'
+cd PackageCompilerConvenienceTools.jl
 julia --project -e 'import Pkg; Pkg.instantiate()'
 ```
 
@@ -32,9 +32,9 @@ julia --project -e 'import Pkg; Pkg.instantiate()'
 #### don't overwrite
 
 ```julia
-julia> using PackageCompilerHelper
+julia> using PackageCompilerConvenienceTools
 
-julia> PackageCompilerHelper.fast_and_simple(project;
+julia> PackageCompilerConvenienceTools.fast_and_simple(project;
                                              shared_project = shared_project,
                                              sysimage_path = "ExampleSysimage.so")
 ```
@@ -42,17 +42,17 @@ julia> PackageCompilerHelper.fast_and_simple(project;
 #### overwrite
 
 ```julia
-julia> using PackageCompilerHelper
+julia> using PackageCompilerConvenienceTools
 
-julia> PackageCompilerHelper.fast_and_simple(project;
+julia> PackageCompilerConvenienceTools.fast_and_simple(project;
                                              shared_project = shared_project,
                                              replace_default = true)
 ```
 
 ```julia
-julia> using PackageCompilerHelper
+julia> using PackageCompilerConvenienceTools
 
-julia> PackageCompilerHelper.restore_default_sysimage()
+julia> PackageCompilerConvenienceTools.restore_default_sysimage()
 ```
 
 ### don't have packages
@@ -60,7 +60,7 @@ julia> PackageCompilerHelper.restore_default_sysimage()
 #### don't overwrite
 
 ```julia
-julia> using PackageCompilerHelper
+julia> using PackageCompilerConvenienceTools
 
 julia> using Pkg
 
@@ -73,7 +73,7 @@ julia> Pkg.activate(project;
 
 julia> Pkg.add("Crayons")
 
-julia> PackageCompilerHelper.fast_and_simple(project;
+julia> PackageCompilerConvenienceTools.fast_and_simple(project;
                                              shared_project = shared_project,
                                              sysimage_path = "ExampleSysimage.so")
 ```
@@ -81,7 +81,7 @@ julia> PackageCompilerHelper.fast_and_simple(project;
 #### overwrite
 
 ```julia
-julia> using PackageCompilerHelper
+julia> using PackageCompilerConvenienceTools
 
 julia> using Pkg
 
@@ -94,13 +94,13 @@ julia> Pkg.activate(project;
 
 julia> Pkg.add("Crayons")
 
-julia> PackageCompilerHelper.fast_and_simple(project;
+julia> PackageCompilerConvenienceTools.fast_and_simple(project;
                                              shared_project = shared_project,
                                              replace_default = true)
 ```
 
 ```julia
-julia> using PackageCompilerHelper
+julia> using PackageCompilerConvenienceTools
 
-julia> PackageCompilerHelper.restore_default_sysimage()
+julia> PackageCompilerConvenienceTools.restore_default_sysimage()
 ```

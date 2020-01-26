@@ -1,4 +1,4 @@
-module PackageCompilerHelper
+module PackageCompilerConvenienceTools
 
 import PackageCompilerX
 import Pkg

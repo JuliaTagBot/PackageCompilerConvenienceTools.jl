@@ -1,23 +1,23 @@
-using PackageCompilerHelper
+using PackageCompilerConvenienceTools
 using Test
 
 import Pkg
 
-@testset "PackageCompilerHelper.jl" begin
+@testset "PackageCompilerConvenienceTools.jl" begin
     @testset "public.jl" begin
         @testset "fast_and_simple" begin
-            PackageCompilerHelper._with_temp_project() do my_temp_project
-                PackageCompilerHelper._with_temp_dir() do my_temp_dir
+            PackageCompilerConvenienceTools._with_temp_project() do my_temp_project
+                PackageCompilerConvenienceTools._with_temp_dir() do my_temp_dir
                     Pkg.add("Crayons")
                     sysimage_path = joinpath(my_temp_dir, "ExampleSysimage.so")
                     @test !isfile(sysimage_path)
                     @test !ispath(sysimage_path)
-                    @test_throws ArgumentError PackageCompilerHelper.fast_and_simple(my_temp_project;
+                    @test_throws ArgumentError PackageCompilerConvenienceTools.fast_and_simple(my_temp_project;
                                                                                      shared_project = false,
                                                                                      replace_default = true)
                     @test !isfile(sysimage_path)
                     @test !ispath(sysimage_path)
-                    PackageCompilerHelper.fast_and_simple(my_temp_project;
+                    PackageCompilerConvenienceTools.fast_and_simple(my_temp_project;
                                                           shared_project = false,
                                                           sysimage_path = sysimage_path)
                     @test isfile(sysimage_path)
@@ -37,14 +37,14 @@ import Pkg
         @testset "CI-only tests" begin
             @testset "CI public.jl" begin
                 @testset "CI fast_and_simple" begin
-                    PackageCompilerHelper._with_temp_project() do my_temp_project
-                        PackageCompilerHelper._with_temp_dir() do my_temp__dir
+                    PackageCompilerConvenienceTools._with_temp_project() do my_temp_project
+                        PackageCompilerConvenienceTools._with_temp_dir() do my_temp__dir
                             Pkg.add("Crayons")
-                            @test_throws ArgumentError PackageCompilerHelper.fast_and_simple(my_temp_project;
+                            @test_throws ArgumentError PackageCompilerConvenienceTools.fast_and_simple(my_temp_project;
                                                                                              shared_project = false,
                                                                                              replace_default = true)
                             if !(Sys.iswindows())
-                                PackageCompilerHelper.fast_and_simple(my_temp_project;
+                                PackageCompilerConvenienceTools.fast_and_simple(my_temp_project;
                                                                       shared_project = false,
                                                                       replace_default = true,
                                                                       force_replace_default = true)
