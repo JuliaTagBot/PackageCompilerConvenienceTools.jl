@@ -43,16 +43,18 @@ import Pkg
                             @test_throws ArgumentError PackageCompilerHelper.fast_and_simple(my_temp_project;
                                                                                              shared_project = false,
                                                                                              replace_default = true)
-                            PackageCompilerHelper.fast_and_simple(my_temp_project;
-                                                                  shared_project = false,
-                                                                  replace_default = true,
-                                                                  force_replace_default = true)
-                            p_1 = run(`$(Base.julia_cmd()) --project=$(my_temp_project) -e 'import Crayons'`)
-                            wait(p_1)
-                            @test success(p_1)
-                            p_2 = run(`$(Base.julia_cmd()) --project=$(my_temp_project) -e 'import Pkg; Pkg.test("Crayons")'`)
-                            wait(p_2)
-                            @test success(p_2)
+                            if !(Sys.iswindows())
+                                PackageCompilerHelper.fast_and_simple(my_temp_project;
+                                                                      shared_project = false,
+                                                                      replace_default = true,
+                                                                      force_replace_default = true)
+                                p_1 = run(`$(Base.julia_cmd()) --project=$(my_temp_project) -e 'import Crayons'`)
+                                wait(p_1)
+                                @test success(p_1)
+                                p_2 = run(`$(Base.julia_cmd()) --project=$(my_temp_project) -e 'import Pkg; Pkg.test("Crayons")'`)
+                                wait(p_2)
+                                @test success(p_2)
+                            end
                         end
                     end
                 end

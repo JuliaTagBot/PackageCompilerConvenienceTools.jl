@@ -15,17 +15,14 @@ import Random
         pkg_is_in_notest = pkg in notest
         pkg_is_not_in_notest = !pkg_is_in_notest
         if pkg_is_not_in_notest && (test_stdlibs || pkg_is_not_stdlib)
-            package_directory = _package_directory(pkg)
-            if package_directory !== nothing
-                package_runtests = joinpath(package_directory, "test", "runtests.jl")
-                if isfile(package_runtests)
-                    module_name = "Test_$(pkg)_$(Random.randstring(16))"
-                    result *= "module $(module_name)\n"
-                    result *= "include(\"$(package_runtests)\")\n"
-                    result *= "end # end module $(module_name) \n"
-                    result *= "import .$(module_name)\n"
-                end
-            end
+            module_name = "Test_$(pkg)_$(Random.randstring(16))"
+            result *= "module $(module_name)\n"
+            result *= "import $(pkg)\n"
+            result *= "if Base.pkgdir($(pkg)) !== nothing && isfile(joinpath(Base.pkgdir($(pkg)), \"test\", \"runtests.jl\"))\n"
+            result *= "include(joinpath(Base.pkgdir($(pkg)), \"test\", \"runtests.jl\"))\n"
+            result *= "end # end if\n"
+            result *= "end # end module $(module_name)\n"
+            result *= "import .$(module_name)\n"
         end
     end
     return result

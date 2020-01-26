@@ -25,6 +25,7 @@ notifications:
 os:
   - macos
   - linux
+  - windows
 
 script: julia --code-coverage --inline=no -e 'using Pkg; Pkg.build(); Pkg.test(coverage=true)'
 
