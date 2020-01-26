@@ -1,6 +1,6 @@
 # PackageCompilerConvenienceTools
 
-[![Build Status](https://travis-ci.com/bcbi/PackageCompilerConvenienceTools.jl.svg?branch=master)](https://travis-ci.com/bcbi/PackageCompilerConvenienceTools.jl)
+[![Build Status](https://travis-ci.com/bcbi/PackageCompilerConvenienceTools.jl.svg?branch=master)](https://travis-ci.com/bcbi/PackageCompilerConvenienceTools.jl/branches)
 [![Codecov](https://codecov.io/gh/bcbi/PackageCompilerConvenienceTools.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/bcbi/PackageCompilerConvenienceTools.jl)
 
 `PackageCompilerConvenienceTools` provides some convenience functions that make it
