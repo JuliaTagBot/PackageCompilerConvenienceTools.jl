@@ -4,7 +4,7 @@ import Random
 @inline function _precompile_execution_content(pkgs::AbstractVector{<:Symbol};
                                                notest::AbstractVector{<:Symbol} = Symbol[],
                                                test_stdlibs::Bool = false)
-    stdlib_names = Symbol.(collect(values(Pkg.Types.stdlib())))
+    stdlib_names = Symbol.(collect(values(Pkg.Types.stdlibs())))
     result = "\n"
     result *= "import Pkg\n"
     result *= "import Test\n"
